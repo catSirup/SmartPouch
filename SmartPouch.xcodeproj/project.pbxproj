@@ -34,10 +34,10 @@
 		5A3CFAC12161A7CC00E43397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A3CFAC62161A7CE00E43397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A3CFAC82161A7CE00E43397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A6233AE21744CAF00221708 /* smartpouchalert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = smartpouchalert.wav; path = ../../smartpouchalert.wav; sourceTree = "<group>"; };
+		5A6233AE21744CAF00221708 /* smartpouchalert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = smartpouchalert.wav; sourceTree = SOURCE_ROOT; };
 		5A6233B22174685D00221708 /* SmartPouch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartPouch.entitlements; sourceTree = "<group>"; };
 		5A6233B321749D1500221708 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		5A94A43D21758B320015E571 /* smartpouchfind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = smartpouchfind.wav; path = ../../smartpouchfind.wav; sourceTree = "<group>"; };
+		5A94A43D21758B320015E571 /* smartpouchfind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = smartpouchfind.wav; path = ../smartpouchfind.wav; sourceTree = "<group>"; };
 		5A94A43F2175A6F90015E571 /* SetWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetWebController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

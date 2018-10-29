@@ -48,6 +48,6 @@ var isLostAlert : Bool? = nil                       // 백그라운드에서 푸
 
 var webURL : String = "https://catsirup.github.io"  // 광고페이지에 들어갈 URL
 
-var isDetecting : Bool = false      // 비콘 탐지를 하고 있는지 아닌지 확인
-var isBackground : Bool = false     // 현재 백그라운드 상태인지 아닌지 확인
-let homeInstance : Home = Home.sharedInstance
+var isDetecting : Bool = false                      // 비콘 탐지를 하고 있는지 아닌지 확인
+var isBackground : Bool = false                     // 현재 백그라운드 상태인지 아닌지 확인
+let homeInstance : Home = Home.sharedInstance       // 홈화면 인스턴스

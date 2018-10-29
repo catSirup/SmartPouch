@@ -6,6 +6,9 @@
 //  Copyright © 2018년 Youngwoo. All rights reserved.
 //
 
+// 백그라운드에서 로컬 알림 눌렀을 때, 상황에 맞게 알림창 띄울 수 있도록 함.
+
+
 import UIKit
 import CoreLocation
 import UserNotifications
