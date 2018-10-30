@@ -132,19 +132,15 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("비콘이 범위 내에 있음")
-        //findBeaconAlertPopup()
-        //playSound("smartpouchfind.wav")
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("비콘이 범위 밖을 벗어남")
-        //lostBeaconAlertPopup()
-        //playSound("smartpouchalert.wav")
     }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         count += 1
-        print(String("\(count), isFound : \(isFound)"))
+        print(String("\(count)"))
         if beacons.count > 0 {
             let nearestBeacon = beacons.first!
             switch nearestBeacon.proximity {
@@ -156,19 +152,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 break
                 
             case .far:
-                 /*if (detectDistance == CLProximity.near) {
-                    if (IsPlaying == false) {
-                        setLocalNotificaion("연결이 해제되었습니다.", "스마트 파우치의 위치를 확인해주세요.", true)
-                        lostBeaconAlertPopup()
-                        playSound("smartpouchalert.wav")
-                        IsPlaying = true
-                    } else {
-                        setLocalNotificaion("연결되었습니다.", "스마트 파우치와 다시 연결되었습니다.", false)
-                        findBeaconAlertPopup()
-                        playSound("smartpouchfind.wav")
-                        IsPlaying = false;
-                    }
-                 }*/
                 break
                 
             case .unknown:
