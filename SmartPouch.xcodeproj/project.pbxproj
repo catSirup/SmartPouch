@@ -57,6 +57,7 @@
 			children = (
 				5A3CFABB2161A7CC00E43397 /* SmartPouch */,
 				5A3CFABA2161A7CC00E43397 /* Products */,
+				5A45CB8021884F2200BA6FA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +89,13 @@
 				5A001A91216F09A000A1E9B3 /* MyBeacon.swift */,
 			);
 			path = SmartPouch;
+			sourceTree = "<group>";
+		};
+		5A45CB8021884F2200BA6FA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +135,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.VPNLite = {
 								enabled = 0;
 							};
 						};
