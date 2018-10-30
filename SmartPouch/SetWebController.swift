@@ -41,7 +41,7 @@ class SetWebController: UIViewController {
     }
     
     func okActions() {
-        performSegue(withIdentifier: "GotoSetting", sender: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

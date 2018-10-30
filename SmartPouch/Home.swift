@@ -14,7 +14,7 @@ import CoreLocation
 import UserNotifications
 import AVFoundation
 
-extension Home : UNUserNotificationCenterDelegate {
+extension Home {
     func setLocalNotificaion(_ Title : String, _ Body : String, _ isLost : Bool) {
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .sound];
@@ -40,6 +40,7 @@ extension Home : UNUserNotificationCenterDelegate {
                 }
             }
         }
+        
     }
 }
 
@@ -53,7 +54,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
     var player : AVAudioPlayer?
     
     var count : Int = 0;
-    
     static let sharedInstance = Home()
     
     override func viewDidLoad() {
@@ -186,7 +186,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 else
                 {
                     playSound("smartpouchfind.wav")
-                    findBeaconAlertPopup()
+                    BeaconAlertPopup(Title: "스마트 파우치와 연결되었습니다.", Msg: "파우치를 꼭 챙기세요")
                 }
                 isFound = true
             }
@@ -202,7 +202,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
                 }
                 else
                 {
-                    lostBeaconAlertPopup()
+                    BeaconAlertPopup(Title: "스마트 파우치와 연결이 끊어졌습니다.", Msg: "파우치를 확인하세요")
                     playSound("smartpouchalert.wav")
                 }
                 isFound = false;
@@ -244,10 +244,9 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    
     // 비콘 잃어버렸을 때
-    func lostBeaconAlertPopup() {
-        let alertController = UIAlertController(title: "스마트 파우치와\n연결이 끊어졌습니다.",message: "연결 상태를 확인해주세요", preferredStyle: UIAlertController.Style.alert)
+    func BeaconAlertPopup(Title title : String, Msg msg : String) {
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
         
         let okAction = UIAlertAction(title : "확인", style: UIAlertAction.Style.default) { (action: UIAlertAction) -> Void in
             self.okActions()
@@ -257,24 +256,14 @@ class Home: UIViewController, CLLocationManagerDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // 비콘 찾았을 때
-    func findBeaconAlertPopup()
-    {
-        let alertController = UIAlertController(title: "스마트 파우치와\n연결되었습니다",message: "파우치를 꼭 챙기세요", preferredStyle: UIAlertController.Style.alert)
-        
-        let okAction = UIAlertAction(title : "확인", style: UIAlertAction.Style.default) { (action: UIAlertAction) -> Void in
-            self.okActions()
-        }
-        
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+    func gotoWebPage() {
+        let webPage = self.storyboard?.instantiateViewController(withIdentifier: "WebPageView")
+        self.present(webPage!, animated: true, completion: nil)
     }
     
     func okActions() {
         player?.stop()
-        let webPage = self.storyboard?.instantiateViewController(withIdentifier: "WebPageView")
-        self.present(webPage!, animated: true, completion: nil)
+        gotoWebPage()
     }
     @IBAction func GotoSetting(_ sender: Any) {
         let setting = self.storyboard?.instantiateViewController(withIdentifier: "Setting")

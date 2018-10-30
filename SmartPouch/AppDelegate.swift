@@ -14,7 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // 10 이상에서 사용하는 노티관련 기능
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+        }
         return true
     }
 
@@ -44,5 +48,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    
+        if (isLostAlert == true) {
+            let alertController = UIAlertController(title: "스마트 파우치와\n연결이 끊어졌습니다.", message: "파우치를 확인하세요", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title : "확인", style: UIAlertAction.Style.default) { (action: UIAlertAction) -> Void in
+                let webPage = UIApplication.topViewController()?.storyboard?.instantiateViewController(withIdentifier: "WebPageView")
+                UIApplication.topViewController()?.present(webPage!, animated: true, completion: nil)
+            }
+            alertController.addAction(okAction)
+            UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+            
+            
+        } else if (isLostAlert == false) {
+            let alertController = UIAlertController(title: "스마트 파우치와\n연결되었습니다.", message: "파우치를 꼭 챙기세요", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title : "확인", style: UIAlertAction.Style.default) { (action: UIAlertAction) -> Void in
+                let webPage = UIApplication.topViewController()?.storyboard?.instantiateViewController(withIdentifier: "WebPageView")
+                UIApplication.topViewController()?.present(webPage!, animated: true, completion: nil)
+            }
+            alertController.addAction(okAction)
+            UIApplication.topViewController()?.present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
 }
 
