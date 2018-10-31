@@ -15,7 +15,7 @@ class FindSmartPouch: UIViewController, CLLocationManagerDelegate {
     var distance : Double = 10.0
     @IBOutlet weak var currentBeacon: UILabel!
     
-    var manager:CBCentralManager!
+    var centralManager:CBCentralManager!
 
     @IBAction func OnClick(_ sender: Any) {
         if (myBeacon.uuid == "")
@@ -57,8 +57,8 @@ class FindSmartPouch: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         startScanningForBeaconRegion(beaconRegion: getBeaconRegion())
         
-        manager = CBCentralManager()
-        manager.delegate = self
+        centralManager = CBCentralManager()
+        centralManager.delegate = self
     }
     
     func getBeaconRegion() -> CLBeaconRegion {
@@ -101,17 +101,6 @@ extension FindSmartPouch: CBCentralManagerDelegate {
         case .poweredOn:
             break
         case .poweredOff:
-            //let alertController = UIAlertController(title: "블루투스가 꺼져있습니다.",message: "파우치와 연결하려면 블루투스를 켜주세요.", preferredStyle: UIAlertController.Style.alert)
-            
-            //let okAction = UIAlertAction(title : "확인", style: UIAlertAction.Style.destructive) { (action: UIAlertAction) -> Void in
-            //    self.gotoSetting()
-            //}
-            //let cancelButton = UIAlertAction(title : "취소", style: UIAlertAction.Style.cancel, handler : nil)
-            
-            //alertController.addAction(okAction)
-            //alertController.addAction(cancelButton)
-            
-            //self.present(alertController, animated: true, completion: nil)
             break
         case .resetting:
             break
@@ -123,13 +112,6 @@ extension FindSmartPouch: CBCentralManagerDelegate {
             break
         default:
             break
-        }
-    }
-    
-    func gotoSetting() {
-        if #available(iOS 10.0, *) {
-            let url = NSURL(string:"App-prefs:root=General&path=Bluetooth")! as URL
-            UIApplication.shared.open(url)
         }
     }
 }

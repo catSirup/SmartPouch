@@ -28,6 +28,7 @@
 		5A001A95216F0E4900A1E9B3 /* SettingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddress.swift; sourceTree = "<group>"; };
 		5A001A97216F0E8200A1E9B3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		5A001A99216F0EAC00A1E9B3 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		5A3B37CC21897E20009ADB1D /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		5A3CFAB92161A7CC00E43397 /* SmartPouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3CFABC2161A7CC00E43397 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A3CFABE2161A7CC00E43397 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		5A45CB8021884F2200BA6FA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A3B37CC21897E20009ADB1D /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -334,7 +336,6 @@
 		5A3CFACC2161A7CE00E43397 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRWP8BJ8VE;
 				INFOPLIST_FILE = SmartPouch/Info.plist;
@@ -353,7 +354,6 @@
 		5A3CFACD2161A7CE00E43397 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRWP8BJ8VE;
 				INFOPLIST_FILE = SmartPouch/Info.plist;
