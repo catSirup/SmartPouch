@@ -89,11 +89,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 모니터링 종료해주는 함수
-    func stopScanningForBeaconRegion(beaconRegion: CLBeaconRegion) {
-        locationManager.stopMonitoring(for: beaconRegion)
-    }
-    
     // 위치 서비스에 대한 권한이 받아들여지면 MonitorBeacons() 함수 호출
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
@@ -117,6 +112,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
     }
     
     // 모니터링이 실행된 후 영역의 판단이 이루어지는 순간에 이 메소드가 실행
+    // 여기서 해당 노티피케이션 받을 수 있음.
+    // not running 상태에서도
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         if state == .inside {        // 영역 안에 들어온 순간
             locationManager.startRangingBeacons(in: beaconRegion)
@@ -127,17 +124,17 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-    //    print("비콘이 범위 내에 있음")
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("비콘이 범위 내로 들어옴")
     //    playSound("smartpouchfind.wav")
     //    BeaconAlertPopup(Title: "스마트 파우치와 연결되었습니다.", Msg: "파우치를 꼭 챙기세요")
-    //}
+    }
     
-    //func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-    //    print("비콘이 범위 밖을 벗어남")
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("비콘이 범위 밖을 벗어남")
     //    BeaconAlertPopup(Title: "스마트 파우치와 연결이 끊어졌습니다.", Msg: "파우치를 확인하세요")
     //    playSound("smartpouchalert.wav")
-    //}
+    }
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         count += 1
@@ -195,6 +192,22 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func detectBeaconOn() {
+        // 위치 서비스 권한 요청 및 백그라운드 위치 갱신 코드
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false  // 이걸 써줘야 백그라운드에서 멈추지 않고 돈다
+        isDetecting = true
+    }
+    // 모니터링 종료해주는 함수
+    func stopScanningForBeaconRegion(beaconRegion: CLBeaconRegion) {
+        locationManager.stopMonitoring(for: beaconRegion)
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @objc func switchStateDidChange(_ sender: UISwitch){
         if (sender.isOn == true) {
             isDetecting = true
@@ -204,17 +217,6 @@ class Home: UIViewController, CLLocationManagerDelegate {
             locationManager.delegate = nil
             stopScanningForBeaconRegion(beaconRegion: beaconRegion)
         }
-    }
-    
-    func detectBeaconOn() {
-        // 위치 서비스 권한 요청 및 백그라운드 위치 갱신 코드
-        locationManager = CLLocationManager.init()
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        
-        locationManager.startUpdatingLocation()
-        locationManager.allowsBackgroundLocationUpdates = true
-        isDetecting = true
     }
     
     func playSound(_ soundName : String) {
