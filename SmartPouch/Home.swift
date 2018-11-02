@@ -54,7 +54,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
     var player : AVAudioPlayer?
     
     @IBOutlet var beaconState: UILabel!
-    var count : Int = 0;
+    var count : Int = 0;        // 그냥 잘 도는지 체크하는 변수
+    var lostCount : Int = 0;    // 버그 해결 용
     
     let beaconRegion = CLBeaconRegion.init(proximityUUID: UUID.init(uuidString: myBeacon.uuid)!, major: CLBeaconMajorValue(myBeacon.major)!, minor: CLBeaconMinorValue(myBeacon.minor)!, identifier: "Youngwoo")
     static let sharedInstance = Home()
@@ -140,6 +141,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         count += 1
         print(String("\(count), isFound : \(isFound)"))
         if beacons.count > 0 {
+            lostCount = 0;
             let nearestBeacon = beacons.first!
             switch nearestBeacon.proximity {
             case .immediate:
@@ -175,7 +177,8 @@ class Home: UIViewController, CLLocationManagerDelegate {
         }
         else
         {
-            if (isFound == true)
+            lostCount += 1
+            if (isFound == true && lostCount >= 3)
             {
                 if (isBackground == true)
                 {
