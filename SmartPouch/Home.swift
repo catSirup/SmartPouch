@@ -53,7 +53,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     var locationManager : CLLocationManager!
     var player : AVAudioPlayer?
     
-    @IBOutlet var lostCountText: UILabel!
+    @IBOutlet var lostCountCheckText: UILabel!
     var count : Int = 0;        // 그냥 잘 도는지 체크하는 변수
     var lostCount : Int = 0;    // 버그 해결 용
     var lostCountCheck : Int = 0;
@@ -182,7 +182,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
             if (isFound == true && lostCount >= 5)
             {
                 lostCountCheck += 1
-                lostCountText.text = String("Lost Count : \(lostCountCheck)");
+                lostCountCheckText.text = String("Lost Count : \(lostCountCheck)");
                 if (isBackground == true)
                 {
                     setLocalNotificaion("연결이 해제되었습니다.", "스마트 파우치의 위치를 확인해주세요.", true)

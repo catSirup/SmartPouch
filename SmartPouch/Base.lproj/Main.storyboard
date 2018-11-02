@@ -263,7 +263,7 @@
                                     <action selector="GotoSetting:" destination="KAd-ol-Ta4" eventType="touchUpInside" id="InM-fw-6Ai"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lost Count : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IH-jf-oY7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lost Count :  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IH-jf-oY7">
                                 <rect key="frame" x="16" y="365" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
@@ -279,9 +279,9 @@
                         <outlet property="addressInfo" destination="z1F-Bg-fHI" id="juL-Hy-xh6"/>
                         <outlet property="announcetext" destination="e7s-GP-hjn" id="Elw-0x-HRc"/>
                         <outlet property="beaconInfo" destination="2GR-uS-vpz" id="r63-XK-0il"/>
-                        <outlet property="beaconState" destination="2IH-jf-oY7" id="eFc-nh-sZE"/>
                         <outlet property="findSmartPouchText" destination="EQX-w9-ymV" id="x8o-45-LnY"/>
                         <outlet property="findSwitch" destination="3LB-pq-Qxe" id="Ht9-29-BTU"/>
+                        <outlet property="lostCountCheckText" destination="2IH-jf-oY7" id="O2A-pb-Ta6"/>
                         <segue destination="29D-zf-dFQ" kind="showDetail" identifier="WebView" id="pN1-ol-Lq3"/>
                         <segue destination="Jzw-Ky-XYQ" kind="show" identifier="gotosetting" id="Vjo-BI-Oy1"/>
                     </connections>
