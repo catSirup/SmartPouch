@@ -140,7 +140,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         count += 1
-        print(String("\(count), isFound : \(isFound)"))
+        print(String("\(count), isFound : \(isFound), LostCheck : \(lostCount)"))
         if beacons.count > 0 {
             lostCount = 0;
             let nearestBeacon = beacons.first!
