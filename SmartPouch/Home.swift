@@ -179,7 +179,7 @@ class Home: UIViewController, CLLocationManagerDelegate {
         else
         {
             lostCount += 1
-            if (isFound == true && lostCount >= 5)
+            if (isFound == true && lostCount >= 10)
             {
                 lostCountCheck += 1
                 lostCountCheckText.text = String("Lost Count : \(lostCountCheck)");
